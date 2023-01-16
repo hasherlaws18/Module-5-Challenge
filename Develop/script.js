@@ -1,7 +1,23 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+var timeblockEl = $('.saveBtn');
+var DisplayCurrentDate = $('#currentDay');
+function displayDate(){
+  var currentDate = dayjs().format('MM/DD/YYYY');
+console.log(currentDate);
+DisplayCurrentDate.text(currentDate)
+}
+displayDate()
+$(function calendartime() {
+  // var time = localStorage.getItem('time');
+  // if (time) {
+  //   time = JSON.parse(time);
+  // } else {
+  //   time = [];
+  // }
+  // return time;
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -21,3 +37,24 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+// function savecalendartime(time){
+// localStorage.setItem('time',JSON.stringify(time));
+// }
+function clickcalendartime(){
+  console.log('hello world')
+  var userText = $(this).siblings('.description').val()
+  console.log(userText)
+  var hours = $(this).parent().attr('id')
+  console.log(hours)
+  localStorage.setItem(hours, userText);
+ 
+ 
+ 
+ 
+  // var time = calendartime();
+  // time.push(Newtime);
+  // savecalendartime(time);
+}
+
+timeblockEl.on('click', clickcalendartime);
+$("#hour9 .description").val(localStorage.getItem('#hour9'));
